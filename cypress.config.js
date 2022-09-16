@@ -3,6 +3,7 @@
 module.exports = ({
   e2e: {
     baseUrl: 'http://localhost:5007',
-    supportFile:false
+    supportFile:false,
+    video:false
   }
 })
