@@ -35,3 +35,5 @@ jobs:
           heroku_api_key: ${{secrets.API_KEY}}
           heroku_app_name: ${{secrets.APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.EMAIL}}
+          healthcheck: "https://${{secrets.APP_NAME}}/health"
+          rollbackonhealthcheckfailed: true 
