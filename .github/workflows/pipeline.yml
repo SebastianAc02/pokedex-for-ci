@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches: 
+      - main
+    types: [opened, synchronize]
 
 jobs:
   deploy:
@@ -30,10 +34,11 @@ jobs:
           start: npm run start test 
           wait-on: http://localhost:5007
       - name: Heroku Deployment
+        if: ${{}} 
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: c90a4cdc-d2fb-456c-ac79-5750d00b1899
-          heroku_app_name: sebas-first-ci-ga #Must be unique in Heroku
-          heroku_email: sacostamolina@outlook.com
-          healthcheck: " https://sebas-first-ci-ga.herokuapp.com/health"
+          heroku_api_key: ${{secrets.API_KEY}}
+          heroku_app_name: ${{secrets.APP_NAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.EMAIL}}
+          healthcheck: "https://${{secrets.APP_NAME}}.herokuapp.com/health"
           rollbackonhealthcheckfailed: true 
