@@ -111,7 +111,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.API_KEY}}
-          heroku_app_name: ${{secrets.APP_NAME}} #Must be unique in Heroku
+          heroku_app_name: sebas-first-ci-ga #Must be unique in Heroku
           heroku_email: ${{secrets.EMAIL}}
-          healthcheck: "https://${{secrets.APP_NAME}}.herokuapp.com/health"
+          healthcheck: "https://sebas-first-ci-ga.herokuapp.com/health"
           rollbackonhealthcheckfailed: true 
